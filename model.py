@@ -34,8 +34,9 @@ f1_bias_dt_1 = f1_score(y_test, y_pred)
 print("Accuracy of adaboost bias weights dt:", round(accuracy_bias_dt_1, 3) * 100, "%")
 print("F1-score:", round(f1_bias_dt_1, 2))
 
-# Saving the Model
+# Saving the Model and Scaler
 joblib.dump(ada_bias_dt_1, 'model.pkl')
+joblib.dump(sc, 'scaler.pkl')
 
 # Keep script running
 input("Press Enter to exit...")
