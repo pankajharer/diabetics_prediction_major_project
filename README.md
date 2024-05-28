@@ -1,0 +1,1 @@
+# diabetics_prediction_major_project
