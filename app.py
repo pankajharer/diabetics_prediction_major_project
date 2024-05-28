@@ -6,13 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 app = Flask(__name__)
 model = joblib.load('model.pkl')
-
-dataset = pd.read_csv('diabetes-dataset.csv')
-dataset_X = dataset.iloc[:, [1, 2, 5, 7]].values
-
-sc = MinMaxScaler(feature_range=(0, 1))
-dataset_scaled = sc.fit_transform(dataset_X)
-
+sc = joblib.load('scaler.pkl')
 
 @app.route('/')
 def home():
@@ -21,9 +15,10 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     float_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(float_features)]
+    final_features = np.array(float_features).reshape(1, -1)
     
-    prediction = model.predict(sc.transform(final_features))
+    scaled_features = sc.transform(final_features)
+    prediction = model.predict(scaled_features)
 
     if prediction == 1:
         pred = "You have Diabetes, please consult a Doctor."
