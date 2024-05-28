@@ -4,5 +4,8 @@ pandas
 scikit-learn
 joblib
 gunicorn
+joblib
+seaborn
+missingno
 
 
