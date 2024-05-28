@@ -36,7 +36,6 @@ print("F1-score:", round(f1_bias_dt_1, 2))
 
 # Saving the Model and Scaler
 joblib.dump(ada_bias_dt_1, 'model.pkl')
-joblib.dump(sc, 'scaler.pkl')
 
 # Keep script running
 input("Press Enter to exit...")
